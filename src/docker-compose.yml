@@ -1,0 +1,15 @@
+version: '3'
+services:
+  onsight_mq:
+    build:
+        context: ./MassTransit.RabbitMqtt/
+        dockerfile: DockerFile
+    hostname: "messagequeue"
+    ports:
+        - "15672:15672"
+        - "5672:5672"
+        - "1883:1883"
+        - "8883:8883"
+    volumes:
+        - ./docker_storage/message_queue/mnesia:/var/lib/rabbitmq/mnesia
+        - ./MassTransit.RabbitMqtt/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
