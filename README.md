@@ -14,7 +14,7 @@ If you already have RabbitMQ running locally, you will need to add the MQTT plug
 
 ## Connecting to RabbitMQ
 
-The management portal can be found at http:localhost:15672
+The management portal can be found at http://localhost:15672
 
 ## Connecting IOT device to RabbitMQ
 
