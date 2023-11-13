@@ -9,6 +9,10 @@ namespace MassTransit.Mqtt.MessageQueue.Messages
     public IEnumerable<MqttItem> Items { get; set; }
   }
 
+  /// <summary>
+  /// An inbound MQTT Message, this should match your accepted inbound MQTT message
+  /// structure, what is shown here is only to demonstrate a real world example
+  /// </summary>
   public class MqttItem
   {
     public DateTimeOffset? Timestamp { get; set; }
