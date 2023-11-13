@@ -29,6 +29,14 @@ namespace MassTransit.Mqtt.MessageQueue.Consumers
 
       var deviceId = "your device Id";
 
+      /*
+       * IMPORTANT
+       * For this to work, you will need to bind the exchange manually in RabbitMq Admin.
+       
+       * Go to the exchange MassTransit.Mqtt.MessageQueue.Serialisation:RawTextMessage
+       * and make a binding to masstransit.mqtt with the routing key '#'
+       */
+
       await context.Publish(new RawTextMessage
       {
         Body = "message to device"
