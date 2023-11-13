@@ -5,12 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="6.0.2" />
-    <PackageReference Include="MassTransit.RabbitMQ" Version="6.0.2" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="8.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Controllers\" />
+    <Folder Include="MessageQueue\Serialisation\" />
   </ItemGroup>
 
 
