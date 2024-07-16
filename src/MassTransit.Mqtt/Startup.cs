@@ -51,9 +51,16 @@ namespace MassTransit.Mqtt
           // Create the endpoint to read from the topic excahnge
           cfg.ReceiveEndpoint("masstransit.mqttconsumer", e =>
           {
+            /*
+             * The built in Raw JSON Serializer, it works well but does not support arrays.
+             * As we cannot control the sender format, we need a more tolerant deserializer
+             */
+            //e.UseRawJsonDeserializer(RawSerializerOptions.AnyMessageType, true);
+
+            // So we use our own custom Message Serializer as a bodge
+            // It requires you use the Message type IRawJsonArrayMessage<T>
             var factory = new SystemTextJsonArrayRawMessageSerializerFactory(RawSerializerOptions.AnyMessageType);
             e.AddDeserializer(factory, true);
-            //e.UseRawJsonDeserializer(RawSerializerOptions.AnyMessageType, true);
 
             // the name of the Exchange used for MQTT messages
             // This is set in the rabbitmq.conf mqtt.exchange setting

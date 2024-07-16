@@ -219,7 +219,7 @@ namespace MassTransit.Mqtt.MessageQueue.Serialisation
           // if the element is an array, switch to array deserialization
           if (jsonElement.ValueKind == JsonValueKind.Array)
           {
-            var items = jsonElement.Deserialize(itemsType);
+            var items = jsonElement.Deserialize(itemsType, Options);
 
             typeof(T).GetProperty(nameof(IRawJsonArrayMessage<object>.Items)).SetValue(mrt, items);
 
