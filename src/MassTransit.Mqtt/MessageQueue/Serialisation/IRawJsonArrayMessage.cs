@@ -13,6 +13,6 @@ namespace MassTransit.Mqtt.MessageQueue.Serialisation
   /// <typeparam name="T"></typeparam>
   public interface IRawJsonArrayMessage<T>
   {
-    IEnumerable<T> Items { get; set; }
+    List<T> Items { get; set; }
   }
 }

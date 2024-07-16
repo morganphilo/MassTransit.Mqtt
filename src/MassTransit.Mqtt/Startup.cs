@@ -51,7 +51,9 @@ namespace MassTransit.Mqtt
           // Create the endpoint to read from the topic excahnge
           cfg.ReceiveEndpoint("masstransit.mqttconsumer", e =>
           {
-            e.UseRawJsonDeserializer();
+            var factory = new SystemTextJsonArrayRawMessageSerializerFactory(RawSerializerOptions.AnyMessageType);
+            e.AddDeserializer(factory, true);
+            //e.UseRawJsonDeserializer(RawSerializerOptions.AnyMessageType, true);
 
             // the name of the Exchange used for MQTT messages
             // This is set in the rabbitmq.conf mqtt.exchange setting
@@ -61,12 +63,13 @@ namespace MassTransit.Mqtt
 
               // route all exchange messages to our queue
               x.RoutingKey = "#";
+
             });
 
             e.ConfigureConsumer<MqttMessageConsumer>(ctx);
             EndpointConvention.Map<MqttMessage>(e.InputAddress);
-
           });
+
         });
       });
       services.AddSingleton<IHostedService, BusService>();

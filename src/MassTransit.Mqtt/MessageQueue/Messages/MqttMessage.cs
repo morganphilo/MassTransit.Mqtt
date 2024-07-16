@@ -6,7 +6,7 @@ namespace MassTransit.Mqtt.MessageQueue.Messages
 {
   public class MqttMessage : IRawJsonArrayMessage<MqttItem>
   {
-    public IEnumerable<MqttItem> Items { get; set; }
+    public List<MqttItem> Items { get; set; }
   }
 
   /// <summary>
